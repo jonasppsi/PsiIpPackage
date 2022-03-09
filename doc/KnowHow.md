@@ -1,4 +1,4 @@
-# Tips
+# Know-How Database
 
 ## Wrong clock associations
 

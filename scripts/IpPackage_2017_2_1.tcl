@@ -10,8 +10,8 @@
 
 #Dependencies
 variable fileLoc [file normalize [file dirname [info script]]]
-source $fileLoc/PsiUtilPath.tcl
-source $fileLoc/PsiUtilString.tcl
+source $fileLoc/utils/PsiUtilPath.tcl
+source $fileLoc/utils/PsiUtilString.tcl
 namespace export -clear
 
 #Internal Variables
@@ -1074,7 +1074,7 @@ proc package {tgtDir {edit false} {synth false} {part ""}} {
 		file mkdir $DriverDir/src
 		
 		#.MDD File
-		psi::util::string::copyAndReplaceTags "$fileLoc/Snippets/driver/snippet.mdd" $DriverDir/data/$IpName\.mdd [dict create <IP_NAME> $IpName]
+		psi::util::string::copyAndReplaceTags "$fileLoc/scripts/snippets/driver/snippet.mdd" $DriverDir/data/$IpName\.mdd [dict create <IP_NAME> $IpName]
 		set MddPathRel [psi::util::path::relTo $tgtDir $DriverDir/data/$IpName\.mdd false]
 		ipx::add_file $MddPathRel [ipx::get_file_groups xilinx_softwaredriver -of_objects [ipx::current_core]]
 		set_property type mdd [ipx::get_files $MddPathRel -of_objects [ipx::get_file_groups xilinx_softwaredriver -of_objects [ipx::current_core]]]
@@ -1085,13 +1085,13 @@ proc package {tgtDir {edit false} {synth false} {part ""}} {
 			set paramList "$paramList \"$param\""
 		}
 		set paramList [string trim $paramList]
-		psi::util::string::copyAndReplaceTags "$fileLoc/Snippets/driver/snippet.tcl" $DriverDir/data/$IpName\.tcl [dict create <IP_NAME> $IpName <PARAM_LIST> $paramList]
+		psi::util::string::copyAndReplaceTags "$fileLoc/scripts/snippets/driver/snippet.tcl" $DriverDir/data/$IpName\.tcl [dict create <IP_NAME> $IpName <PARAM_LIST> $paramList]
 		set TclPathRel [psi::util::path::relTo $tgtDir $DriverDir/data/$IpName\.tcl false]
 		ipx::add_file $TclPathRel [ipx::get_file_groups xilinx_softwaredriver -of_objects [ipx::current_core]]
 		set_property type tclSource [ipx::get_files $TclPathRel -of_objects [ipx::get_file_groups xilinx_softwaredriver -of_objects [ipx::current_core]]]
 		
 		#Makefile
-		psi::util::string::copyAndReplaceTags "$fileLoc/Snippets/driver/Makefile" $DriverDir/src/Makefile [dict create <IP_NAME> $IpName]
+		psi::util::string::copyAndReplaceTags "$fileLoc/scripts/snippets/driver/Makefile" $DriverDir/src/Makefile [dict create <IP_NAME> $IpName]
 		set MakePathRel [psi::util::path::relTo $tgtDir $DriverDir/src/Makefile false]
 		ipx::add_file $MakePathRel [ipx::get_file_groups xilinx_softwaredriver -of_objects [ipx::current_core]]
 		set_property type unknown [ipx::get_files $MakePathRel -of_objects [ipx::get_file_groups xilinx_softwaredriver -of_objects [ipx::current_core]]]

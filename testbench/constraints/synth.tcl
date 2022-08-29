@@ -1,0 +1,1 @@
+puts "DEBUG: this is synth.xdc (run only during synth.)"

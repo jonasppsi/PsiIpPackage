@@ -9,13 +9,15 @@ library ieee;
     use ieee.std_logic_1164.all;
     use ieee.numeric_std.all;
 
+library work;
+
 ---------------------------------------------------------------------------------------------------
 -- Entity Declaration
 ---------------------------------------------------------------------------------------------------
 entity dummy_ipi is
     generic
     (
-        Clk_FreqHz_g            : natural       := 100e6;
+        Clk_FreqHz_g            : natural       := 150e6;
         M_Axi_DataWidth_g       : natural       := 32;
         M_Axi_AddrWidth_g       : natural       := 16;
         S_Axi_DataWidth_g       : natural       := 32;
@@ -215,6 +217,14 @@ begin
         
         -- AXI Stream Slave Interface [Axis_Clk]
 		S_Axis_TReady   <= '0';
+		
+		
+		i_test : entity work.file2
+		port map(
+        Clk => '1',
+        Rst => '0',
+        Tester => open
+        );
     
 end architecture struct;
 

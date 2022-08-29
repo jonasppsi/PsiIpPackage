@@ -4,7 +4,7 @@
 #  Authors: Oliver Bruendler
 ##############################################################################
 
-namespace eval psi::util::string {
+namespace eval ::psi::util::string {
 
 	#Copy a file and replace one or mor tags within a template file
 	#

@@ -4,7 +4,7 @@
 #  Authors: Oliver Bruendler
 ##############################################################################
 
-namespace eval psi::util::path {
+namespace eval ::psi::util::path {
 
 	#Get Relative path from a given directory to a given file
 	#

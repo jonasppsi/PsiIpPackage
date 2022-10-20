@@ -113,4 +113,4 @@ add_bus_interface       "xilinx.com:interface:uart:1.0" \
 ###################################################################################################
 set TargetDir "./../ip_repo/ipi/DummyIpi_2017_2_1"
 #                               Edit    Synth   Part
-package_ip $TargetDir           false   true    xczu4ev-sfvc784-1-i
+package_ip $TargetDir           true   true    xczu4ev-sfvc784-1-i
